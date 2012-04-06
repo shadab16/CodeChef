@@ -1,10 +1,9 @@
-#include <algorithm>
 #include <iostream>
-#include <vector>
+#include <bitset>
 
-std::vector<int> r1;
-std::vector<int> r2;
-std::vector<int> r3;
+std::bitset<1001117+1> r1;
+std::bitset<1000110+1> r2;
+std::bitset<1000053+1> r3;
 
 static int next(int n) {
 
@@ -18,17 +17,14 @@ static int next(int n) {
 
 static void init_series() {
 
-	r1.reserve(39098);
 	for (int n = 1; n <= 1001117; n = next(n)) {
-		r1.push_back(n);
+		r1[n] = true;
 	}
-	r2.reserve(38277);
 	for (int n = 3; n <= 1000110; n = next(n)) {
-		r2.push_back(n);
+		r2[n] = true;
 	}
-	r3.reserve(38958);
 	for (int n = 9; n <= 1000053; n = next(n)) {
-		r3.push_back(n);
+		r3[n] = true;
 	}
 }
 
@@ -48,15 +44,15 @@ int main() {
 		std::cin >> n;
 
 		while (true) {
-			if (std::binary_search(r1.begin(), r1.end(), n)) {
+			if (r1[n]) {
 				std::cout << "1 " << n << '\n';
 				break;
 			}
-			if (std::binary_search(r2.begin(), r2.end(), n)) {
+			if (r2[n]) {
 				std::cout << "3 " << n << '\n';
 				break;
 			}
-			if (std::binary_search(r3.begin(), r3.end(), n)) {
+			if (r3[n]) {
 				std::cout << "9 " << n << '\n';
 				break;
 			}
